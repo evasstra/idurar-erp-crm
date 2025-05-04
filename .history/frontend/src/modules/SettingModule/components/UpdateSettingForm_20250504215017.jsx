@@ -27,19 +27,23 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
       );
     } else {
       const settings = [];
-      // Include settingCategory for each setting
+
       for (const [key, value] of Object.entries(fieldsValue)) {
-        settings.push({ settingKey: key, settingValue: value, settingCategory: settingsCategory });
+        settings.push({ settingKey: key, settingValue: value });
       }
-      // Send the category along with the settings array
-      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } })); // Backend needs adjustment too
+
+      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } }));
     }
   };
 
   useEffect(() => {
     const current = result[settingsCategory];
+    // Log the data received for the specific category
+    console.log(`DEBUG [UpdateSettingForm]: Settings data for category '${settingsCategory}':`, current);
     // Ensure 'current' exists before setting form values
     if (current && typeof current === 'object') {
+      // Log the data being passed to setFieldsValue
+      console.log('DEBUG [UpdateSettingForm]: Attempting to set form values with:', current);
       form.setFieldsValue(current);
     }
   }, [result, settingsCategory, form]); // Added settingsCategory and form to dependencies

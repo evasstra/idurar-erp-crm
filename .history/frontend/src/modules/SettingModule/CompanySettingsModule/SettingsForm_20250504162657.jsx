@@ -45,10 +45,6 @@ const formItems = [
     settingKey: 'company_reg_number',
     valueType: 'string',
   },
-  {
-    settingKey: 'company_bank_account_number',
-    valueType: 'string',
-  },
 ];
 
 export default function SettingForm() {

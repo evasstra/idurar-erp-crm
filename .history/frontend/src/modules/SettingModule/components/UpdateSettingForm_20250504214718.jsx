@@ -27,12 +27,12 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
       );
     } else {
       const settings = [];
-      // Include settingCategory for each setting
+
       for (const [key, value] of Object.entries(fieldsValue)) {
-        settings.push({ settingKey: key, settingValue: value, settingCategory: settingsCategory });
+        settings.push({ settingKey: key, settingValue: value });
       }
-      // Send the category along with the settings array
-      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } })); // Backend needs adjustment too
+
+      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } }));
     }
   };
 

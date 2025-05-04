@@ -9,8 +9,7 @@ import Loading from '@/components/Loading';
 import useLanguage from '@/locale/useLanguage';
 
 export default function UpdateSettingForm({ config, children, withUpload, uploadSettingKey }) {
-  // Use const instead of let
-  const { entity, settingsCategory } = config;
+  let { entity, settingsCategory } = config;
   const dispatch = useDispatch();
   const { result, isLoading } = useSelector(selectSettings);
   const translate = useLanguage();
@@ -27,22 +26,20 @@ export default function UpdateSettingForm({ config, children, withUpload, upload
       );
     } else {
       const settings = [];
-      // Include settingCategory for each setting
+
       for (const [key, value] of Object.entries(fieldsValue)) {
-        settings.push({ settingKey: key, settingValue: value, settingCategory: settingsCategory });
+        settings.push({ settingKey: key, settingValue: value });
       }
-      // Send the category along with the settings array
-      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } })); // Backend needs adjustment too
+
+      dispatch(settingsAction.updateMany({ entity, jsonData: { settings } }));
     }
   };
 
   useEffect(() => {
     const current = result[settingsCategory];
-    // Ensure 'current' exists before setting form values
-    if (current && typeof current === 'object') {
-      form.setFieldsValue(current);
-    }
-  }, [result, settingsCategory, form]); // Added settingsCategory and form to dependencies
+
+    form.setFieldsValue(current);
+  }, [result]);
 
   return (
     <div>

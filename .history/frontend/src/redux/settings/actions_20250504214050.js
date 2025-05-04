@@ -59,7 +59,16 @@ export const settingsAction = {
             type: actionTypes.REQUEST_SUCCESS,
             payload,
           });
-          // Removed duplicate payload assignment and dispatch
+          const payload = dispatchSettingsData(data.result);
+          window.localStorage.setItem(
+            'settings',
+            JSON.stringify(dispatchSettingsData(data.result))
+          );
+
+          dispatch({
+            type: actionTypes.REQUEST_SUCCESS,
+            payload,
+          });
         } else {
           dispatch({
             type: actionTypes.REQUEST_FAILED,
@@ -102,7 +111,16 @@ export const settingsAction = {
             type: actionTypes.REQUEST_SUCCESS,
             payload,
           });
-          // Removed duplicate payload assignment and dispatch
+          const payload = dispatchSettingsData(data.result);
+          window.localStorage.setItem(
+            'settings',
+            JSON.stringify(dispatchSettingsData(data.result))
+          );
+
+          dispatch({
+            type: actionTypes.REQUEST_SUCCESS,
+            payload,
+          });
         } else {
           dispatch({
             type: actionTypes.REQUEST_FAILED,

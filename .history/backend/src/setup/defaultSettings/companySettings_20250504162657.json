@@ -73,8 +73,8 @@
   },
   {
     "settingCategory": "company_settings",
-    "settingKey": "company_bank_account_number",
-    "settingValue": "",
+    "settingKey": "company_bank_account",
+    "settingValue": "iban : 00001231421",
     "valueType": "string"
   }
 ]

@@ -34,9 +34,8 @@ export const settingsAction = {
       dispatch({
         type: actionTypes.REQUEST_LOADING,
       });
-      // Use const instead of let, use template literal
-      const data = await request.patch({
-        entity: `${entity}/updateBySettingKey/${settingKey}`,
+      let data = await request.patch({
+        entity: entity + '/updateBySettingKey/' + settingKey,
         jsonData,
       });
 
@@ -45,21 +44,19 @@ export const settingsAction = {
           type: actionTypes.REQUEST_LOADING,
         });
 
-        // Use const instead of let
-        const listData = await request.listAll({ entity });
+        let data = await request.listAll({ entity });
 
-        if (listData.success === true) {
-          const payload = dispatchSettingsData(listData.result);
+        if (data.success === true) {
+          const payload = dispatchSettingsData(data.result);
           window.localStorage.setItem(
             'settings',
-            JSON.stringify(dispatchSettingsData(listData.result))
+            JSON.stringify(dispatchSettingsData(data.result))
           );
 
           dispatch({
             type: actionTypes.REQUEST_SUCCESS,
             payload,
           });
-          // Removed duplicate payload assignment and dispatch
         } else {
           dispatch({
             type: actionTypes.REQUEST_FAILED,
@@ -77,9 +74,8 @@ export const settingsAction = {
       dispatch({
         type: actionTypes.REQUEST_LOADING,
       });
-      // Use const instead of let, use template literal
-      const data = await request.patch({
-        entity: `${entity}/updateManySetting`,
+      let data = await request.patch({
+        entity: entity + '/updateManySetting',
         jsonData,
       });
 
@@ -88,21 +84,19 @@ export const settingsAction = {
           type: actionTypes.REQUEST_LOADING,
         });
 
-        // Use const instead of let
-        const listData = await request.listAll({ entity });
+        let data = await request.listAll({ entity });
 
-        if (listData.success === true) {
-          const payload = dispatchSettingsData(listData.result);
+        if (data.success === true) {
+          const payload = dispatchSettingsData(data.result);
           window.localStorage.setItem(
             'settings',
-            JSON.stringify(dispatchSettingsData(listData.result))
+            JSON.stringify(dispatchSettingsData(data.result))
           );
 
           dispatch({
             type: actionTypes.REQUEST_SUCCESS,
             payload,
           });
-          // Removed duplicate payload assignment and dispatch
         } else {
           dispatch({
             type: actionTypes.REQUEST_FAILED,
@@ -121,8 +115,7 @@ export const settingsAction = {
         type: actionTypes.REQUEST_LOADING,
       });
 
-      // Use const instead of let
-      const data = await request.listAll({ entity });
+      let data = await request.listAll({ entity });
 
       if (data.success === true) {
         const payload = dispatchSettingsData(data.result);
@@ -145,10 +138,9 @@ export const settingsAction = {
         type: actionTypes.REQUEST_LOADING,
       });
 
-      // Use const instead of let
-      const data = await request.upload({
+      let data = await request.upload({
         entity: entity,
-        id: settingKey, // Assuming id should be settingKey based on context
+        id: settingKey,
         jsonData,
       });
 
@@ -157,10 +149,9 @@ export const settingsAction = {
           type: actionTypes.REQUEST_LOADING,
         });
 
-        // Use const instead of let
-        const listData = await request.listAll({ entity });
+        let data = await request.listAll({ entity });
 
-        if (listData.success === true) {
+        if (data.success === true) {
           const payload = dispatchSettingsData(data.result);
           window.localStorage.setItem(
             'settings',
