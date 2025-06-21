@@ -15,4 +15,10 @@ export const fields = {
   email: {
     type: 'email',
   },
+  latitude: {
+    type: 'number',
+  },
+  longitude: {
+    type: 'number',
+  },
 };

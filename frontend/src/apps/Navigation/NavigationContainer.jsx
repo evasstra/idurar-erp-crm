@@ -26,6 +26,7 @@ import {
   FilterOutlined,
   WalletOutlined,
   ReconciliationOutlined,
+  GlobalOutlined,
 } from '@ant-design/icons';
 
 const { Sider } = Layout;
@@ -80,6 +81,11 @@ function Sidebar({ collapsible, isMobile = false }) {
       key: 'paymentMode',
       label: <Link to={'/payment/mode'}>{translate('payments_mode')}</Link>,
       icon: <WalletOutlined />,
+    },
+    {
+      key: 'map',
+      icon: <GlobalOutlined />,
+      label: <Link to={'/map'}>{translate('map')}</Link>,
     },
     {
       key: 'taxes',

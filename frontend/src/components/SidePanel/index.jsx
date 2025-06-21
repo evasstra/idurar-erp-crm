@@ -67,6 +67,7 @@ export default function SidePanel({ config, topContent, bottomContent, fixHeader
         style={{
           opacity: opacitySider,
           paddingTop: paddingTopSider,
+          overflow: 'auto', // Add this line
         }}
       >
         {fixHeaderPanel}

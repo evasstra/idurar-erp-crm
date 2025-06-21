@@ -14,6 +14,14 @@ const schema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  latitude: {
+    type: Number,
+    default: null,
+  },
+  longitude: {
+    type: Number,
+    default: null,
+  },
   phone: String,
   country: String,
   address: String,

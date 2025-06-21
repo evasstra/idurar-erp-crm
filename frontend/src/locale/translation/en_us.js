@@ -450,6 +450,9 @@ const lang = {
   offers: 'Offers',
   proforma_invoices: 'quote',
   search: 'search',
+  map: 'Map',
+  latitude: 'Latitude',
+  longitude: 'Longitude',
 };
 
 export default lang;

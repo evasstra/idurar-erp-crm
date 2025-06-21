@@ -23,6 +23,11 @@ const routerApp = (entity, controller) => {
   if (entity === 'quote') {
     router.route(`/${entity}/convert/:id`).get(catchErrors(controller['convert']));
   }
+  
+  // Add custom route for client locations
+  if (entity === 'client') {
+    router.route(`/${entity}/listWithLocation`).get(catchErrors(controller['listWithLocation']));
+  }
 };
 
 routesList.forEach(({ entity, controllerName }) => {

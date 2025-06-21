@@ -1,7 +1,7 @@
 import { Form, Input } from 'antd';
 import { validatePhoneNumber } from '@/utils/helpers';
-
 import useLanguage from '@/locale/useLanguage';
+import GeocodingNotification from '@/components/GeocodingNotification';
 
 export default function CustomerForm({ isUpdateForm = false }) {
   const translate = useLanguage();
@@ -14,7 +14,8 @@ export default function CustomerForm({ isUpdateForm = false }) {
   };
 
   return (
-    <>
+    <div style={{ border: '2px solid red', padding: '10px' }}> {/* Debugging border */}
+      <GeocodingNotification />
       <Form.Item
         label={translate('company')}
         name="company"
@@ -86,6 +87,43 @@ export default function CustomerForm({ isUpdateForm = false }) {
       >
         <Input />
       </Form.Item>
+      
+      <Form.Item
+        label={translate('Latitude')}
+        name="latitude"
+        rules={[
+          {
+            pattern: /^-?([1-8]?[0-9]\.\d+|90\.0+)$/,
+            message: 'Invalid latitude value (-90 to 90)'
+          }
+        ]}
+        style={{
+          display: 'inline-block',
+          width: 'calc(50%)',
+          paddingRight: '5px',
+        }}
+      >
+        <Input placeholder="e.g., 37.7749" />
+      </Form.Item>
+      
+      <Form.Item
+        label={translate('Longitude')}
+        name="longitude"
+        rules={[
+          {
+            pattern: /^-?((1[0-7]|[1-9])?\d(\.\d+)?|180\.0+)$/,
+            message: 'Invalid longitude value (-180 to 180)'
+          }
+        ]}
+        style={{
+          display: 'inline-block',
+          width: 'calc(50%)',
+          paddingLeft: '5px',
+        }}
+      >
+        <Input placeholder="e.g., -122.4194" />
+      </Form.Item>
+
       <Form.Item
         name="email"
         label={translate('email')}
@@ -103,6 +141,6 @@ export default function CustomerForm({ isUpdateForm = false }) {
       >
         <Input />
       </Form.Item>
-    </>
+    </div>
   );
 }

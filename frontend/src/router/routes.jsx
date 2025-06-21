@@ -9,6 +9,7 @@ const Dashboard = lazy(() => import('@/pages/Dashboard'));
 const Customer = lazy(() => import('@/pages/Customer'));
 const Invoice = lazy(() => import('@/pages/Invoice'));
 const InvoiceCreate = lazy(() => import('@/pages/Invoice/InvoiceCreate'));
+const MapPage = lazy(() => import('@/pages/Map/MapPage'));
 
 const InvoiceRead = lazy(() => import('@/pages/Invoice/InvoiceRead'));
 const InvoiceUpdate = lazy(() => import('@/pages/Invoice/InvoiceUpdate'));
@@ -118,7 +119,10 @@ let routes = {
       path: '/taxes',
       element: <Taxes />,
     },
-
+    {
+      path: '/map',
+      element: <MapPage />,
+    },
     {
       path: '/profile',
       element: <Profile />,
